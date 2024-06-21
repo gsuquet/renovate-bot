@@ -4,6 +4,15 @@ on:
   #schedule:
   #  - cron: '0/15 6-18 * * 1,2,3,4,5'
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Run Renovate in dry-run mode'
+        required: false
+        type: choice
+        options:
+          - 'extract'
+          - 'lookup'
+          - 'full'
 
 permissions: {}
 
@@ -24,4 +33,5 @@ jobs:
           token: ${{ secrets.RENOVATE_TOKEN }}
           renovate-image: ghcr.io/renovatebot/renovate
           renovate-version: 37.413.3
-
+        env:
+          RENOVATE_DRY_RUN: ${{ github.event.inputs.dry_run || null }}
