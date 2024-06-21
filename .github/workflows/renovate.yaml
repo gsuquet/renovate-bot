@@ -21,13 +21,18 @@ permissions: {}
 concurrency:
   group: renovate
 
+env:
+  RENOVATE_CONFIGURATION: renovate-runner-config.json
+  RENOVATE_IMAGE: ghcr.io/renovatebot/renovate
+  RENOVATE_VERSION: 37.413.3 # renovate: datasource=docker depName=renovate packageName=ghcr.io/renovatebot/renovate
+
 jobs:
   renovate:
     runs-on: ubuntu-latest
     steps:
       - name: Get application token
         id: get_token
-        uses: actions/create-github-app-token@0fd38177ed30e541bb33920ec93084ea48e27968
+        uses: actions/create-github-app-token@c8f55efbd427e7465d6da1106e7979bc8aaee856 # v1.10.1
         with:
           app-id: ${{ secrets.RENOVATE_APP_ID }}
           private-key: ${{ secrets.RENOVATE_PRIVATE_KEY }}
@@ -40,10 +45,10 @@ jobs:
         if: ${{ github.event.inputs.dry_run && github.event.inputs.dry_run != 'off' }}
         uses: renovatebot/github-action@21d88b0bf0183abcee15f990011cca090dfc47dd # v40.1.12
         with:
-          configurationFile: renovate-runner-config.json
+          configurationFile: ${{ env.RENOVATE_CONFIGURATION }}
           token: ${{ steps.get_token.outputs.token }}
-          renovate-image: ghcr.io/renovatebot/renovate
-          renovate-version: 37.413.3
+          renovate-image: ${{ env.RENOVATE_IMAGE }}
+          renovate-version: ${{ env.RENOVATE_VERSION }}
         env:
           RENOVATE_DRY_RUN: ${{ github.event.inputs.dry_run }}
 
@@ -51,7 +56,7 @@ jobs:
         if: ${{ !github.event.inputs.dry_run || github.event.inputs.dry_run == 'off' }}
         uses: renovatebot/github-action@21d88b0bf0183abcee15f990011cca090dfc47dd # v40.1.12
         with:
-          configurationFile: renovate-runner-config.json
+          configurationFile: ${{ env.RENOVATE_CONFIGURATION }}
           token: ${{ steps.get_token.outputs.token }}
-          renovate-image: ghcr.io/renovatebot/renovate
-          renovate-version: 37.413.3
+          renovate-image: ${{ env.RENOVATE_IMAGE }}
+          renovate-version: ${{ env.RENOVATE_VERSION }}
