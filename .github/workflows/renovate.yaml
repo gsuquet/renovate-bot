@@ -28,7 +28,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
-      - name: Run Self-hosted Renovate
+      - name: Run Self-hosted Renovate (Dry Run)
+        if: ${{ github.event.inputs.dry_run && github.event.inputs.dry_run != 'off' }}
         uses: renovatebot/github-action@21d88b0bf0183abcee15f990011cca090dfc47dd # v40.1.12
         with:
           configurationFile: renovate-runner-config.json
@@ -36,4 +37,13 @@ jobs:
           renovate-image: ghcr.io/renovatebot/renovate
           renovate-version: 37.413.3
         env:
-          RENOVATE_DRY_RUN: ${{ github.event.inputs.dry_run == 'off' && null || github.event.inputs.dry_run || null }}
+          RENOVATE_DRY_RUN: ${{ github.event.inputs.dry_run }}
+
+      - name: Run Self-hosted Renovate
+        if: ${{ !github.event.inputs.dry_run || github.event.inputs.dry_run == 'off' }}
+        uses: renovatebot/github-action@21d88b0bf0183abcee15f990011cca090dfc47dd # v40.1.12
+        with:
+          configurationFile: renovate-runner-config.json
+          token: ${{ secrets.RENOVATE_TOKEN }}
+          renovate-image: ghcr.io/renovatebot/renovate
+          renovate-version: 37.413.3
