@@ -22,6 +22,6 @@ jobs:
         with:
           configurationFile: renovate-runner-config.json
           token: ${{ secrets.RENOVATE_TOKEN }}
-          renovate-image: 37.413.3
-          renovate-version: latest
+          renovate-image: ghcr.io/renovatebot/renovate
+          renovate-version: 37.413.3
 
