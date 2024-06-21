@@ -13,6 +13,8 @@ on:
           - 'extract'
           - 'lookup'
           - 'full'
+          - 'off'
+        default: 'off'
 
 permissions: {}
 
@@ -34,4 +36,4 @@ jobs:
           renovate-image: ghcr.io/renovatebot/renovate
           renovate-version: 37.413.3
         env:
-          RENOVATE_DRY_RUN: ${{ github.event.inputs.dry_run || null }}
+          RENOVATE_DRY_RUN: ${{ github.event.inputs.dry_run == 'off' && null || github.event.inputs.dry_run || null }}
