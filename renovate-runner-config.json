@@ -13,5 +13,6 @@
     "onboardingBranch": "chore/renovate/onboarding",
     "onboardingPrTitle": "chore(renovate): onboarding and configuration",
     "platform": "github",
+    "platformCommit": true,
     "prCommitsPerRunLimit": 0
 }
