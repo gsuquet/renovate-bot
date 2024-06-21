@@ -5,7 +5,7 @@
     "dryRun": "full",
     "onboarding": true,
     "onboardingBranch": "chore/renovate/onboarding",
-    "onboardingPRTitle": "chore(renovate): onboarding and configuration",
+    "onboardingPrTitle": "chore(renovate): onboarding and configuration",
     "platform": "github",
     "prCommitsPerRunLimit": 0
 }
