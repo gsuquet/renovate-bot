@@ -24,7 +24,7 @@ concurrency:
 env:
   RENOVATE_CONFIGURATION: renovate-runner-config.json
   RENOVATE_IMAGE: ghcr.io/renovatebot/renovate
-  RENOVATE_VERSION: 37.413.3 # renovate: datasource=docker depName=renovate packageName=ghcr.io/renovatebot/renovate
+  RENOVATE_VERSION: 37.414.1 # renovate: datasource=docker depName=renovate packageName=ghcr.io/renovatebot/renovate
 
 jobs:
   renovate:
