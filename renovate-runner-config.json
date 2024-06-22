@@ -8,7 +8,7 @@
     "onboarding": true,
     "onboardingConfig": {
       "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-      "extends": ["local>gsuquet/renovate:renovate-onboarding-config"]
+      "extends": ["local>gsuquet/renovate:renovate-default-config"]
     },
     "onboardingConfigFileName": ".github/renovate.json",
     "onboardingBranch": "chore/renovate/onboarding",
