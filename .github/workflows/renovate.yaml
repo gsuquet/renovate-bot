@@ -1,8 +1,8 @@
 name: Renovate
 
 on:
-  #schedule:
-  #  - cron: '0/30 7-8,12-13 * * 1,2,3,4,5'
+  schedule:
+   - cron: '5 7,13 * * 1,2,3,4,5'
   workflow_dispatch:
     inputs:
       dry_run:
