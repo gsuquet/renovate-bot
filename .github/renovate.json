@@ -1,6 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Renovate GitHub self-hosted runner repository configuration",
   "extends": [
-    "local>gsuquet/renovate:renovate-repo-config"
+    "github>gsuquet/renovate-config:renovate-default-github",
+    "github>gsuquet/renovate-config:renovate-repo"
   ]
 }
