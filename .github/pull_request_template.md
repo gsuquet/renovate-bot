@@ -12,7 +12,7 @@ Fixes # (issue number)
 :arrow_up: Dependency update (dependency update or adding a new dependency)
 :memo: Documentation update
 
-# Checklist:
+## Checklist
 
 - [ ] My code follows the style guidelines of this project
 - [ ] I have performed a self-review of my own code

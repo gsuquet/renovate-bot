@@ -1,21 +1,25 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Renovate self-hosted runner configuration",
   "autodiscover": true,
-  "autodiscoverFilter": ["gsuquet/*"],
+  "autodiscoverFilter": [
+    "gsuquet/*"
+  ],
   "branchPrefix": "gsuquet/renovate/",
   "dependencyDashboardTitle": "Dependency Dashboard (self-hosted)",
+  "description": "Renovate self-hosted runner configuration",
   "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
   "onboarding": true,
-  "onboardingConfig": {
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["github>gsuquet/renovate:renovate-default-github"]
-  },
-  "onboardingConfigFileName": ".github/renovate.json",
   "onboardingBranch": "chore/renovate/onboarding",
   "onboardingCommitMessage": "chore(config): add renovate",
+  "onboardingConfig": {
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+      "github>gsuquet/renovate:renovate-default"
+    ]
+  },
+  "onboardingConfigFileName": ".github/renovate.json",
   "onboardingPrTitle": "chore(renovate): onboarding and configuration",
   "platform": "github",
-  "platformCommit": true,
+  "platformCommit": "enabled",
   "prCommitsPerRunLimit": 0
 }
