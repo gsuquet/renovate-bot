@@ -1,8 +1,39 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Renovate GitHub self-hosted runner repository configuration",
+  "automergeType": "pr",
+  "commitBodyTable": true,
+  "configMigration": true,
   "extends": [
-    "github>gsuquet/renovate-config:renovate-default-github",
-    "github>gsuquet/renovate-config:renovate-repo"
-  ]
+    "config:best-practices",
+    "customManagers:githubActionsVersions",
+    "helpers:pinGitHubActionDigestsToSemver",
+    "npm:unpublishSafe",
+    ":automergeDigest",
+    ":automergeMinor",
+    ":automergeRequireAllStatusChecks",
+    ":combinePatchMinorReleases",
+    ":enablePreCommit",
+    ":maintainLockFilesWeekly",
+    ":rebaseStalePrs",
+    ":semanticCommits",
+    ":disableRateLimiting",
+    ":gitSignOff"
+  ],
+  "forkProcessing": "enabled",
+  "internalChecksFilter": "strict",
+  "labels": [
+    "renovate"
+  ],
+  "minimumReleaseAge": "0",
+  "packageRules": [
+    {
+      "dependencyDashboardApproval": true,
+      "description": "Require approval for all major version updates",
+      "matchUpdateTypes": [
+        "major"
+      ]
+    }
+  ],
+  "rebaseWhen": "auto",
+  "timezone": "Europe/Paris"
 }

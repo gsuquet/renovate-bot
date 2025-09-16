@@ -2,7 +2,7 @@ name: Renovate
 
 on:
   schedule:
-   - cron: '5 5,11 * * 1,2,3,4,5'
+    - cron: '5 5,11 * * 1,2,3,4,5'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -24,7 +24,7 @@ concurrency:
 env:
   RENOVATE_CONFIGURATION: renovate-runner-config.json
   RENOVATE_IMAGE: ghcr.io/renovatebot/renovate
-  RENOVATE_VERSION: 37.420.1 # renovate: datasource=docker depName=renovate packageName=ghcr.io/renovatebot/renovate
+  RENOVATE_VERSION: 41.115.2 # renovate: datasource=github-releases depName=renovatebot/renovate
 
 jobs:
   renovate:
@@ -39,7 +39,7 @@ jobs:
           owner: ${{ github.repository_owner }}
 
       - name: Checkout repository
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
 
       - name: Run self-hosted Renovate (Dry Run)
         if: ${{ github.event.inputs.dry_run && github.event.inputs.dry_run != 'off' }}

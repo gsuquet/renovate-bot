@@ -1,0 +1,79 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "automergeType": "pr",
+  "commitBodyTable": true,
+  "configMigration": true,
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update _VERSION variables in shell scripts",
+      "fileMatch": [
+        "\\.sh$"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>[a-z-]+?))?\\s[A-Z_]+?_VERSION=(?<currentValue>.+?)\\s"
+      ]
+    },
+    {
+      "customType": "regex",
+      "description": "Update `version:` and `_VERSION:` variables in yml and yaml files",
+      "fileMatch": [
+        "\\.ya?ml$"
+      ],
+      "matchStrings": [
+        "\\s+(?:[a-z]-)?version: (?<currentValue>.+?) # renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?\\s",
+        "\\s*[A-Z_]+?_VERSION: (?<currentValue>.+?) # renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?\\s"
+      ]
+    }
+  ],
+  "description": "Default configuration for use in my personal repositories",
+  "extends": [
+    "config:best-practices",
+    "customManagers:githubActionsVersions",
+    "helpers:pinGitHubActionDigestsToSemver",
+    "npm:unpublishSafe",
+    ":combinePatchMinorReleases",
+    ":enablePreCommit",
+    ":maintainLockFilesWeekly",
+    ":rebaseStalePrs",
+    ":semanticCommits",
+    ":disableRateLimiting",
+    ":gitSignOff"
+  ],
+  "forkProcessing": "enabled",
+  "internalChecksFilter": "strict",
+  "labels": [
+    "renovate"
+  ],
+  "minimumReleaseAge": "0",
+  "packageRules": [
+    {
+      "dependencyDashboardApproval": true,
+      "description": "Require approval for all major version updates",
+      "matchUpdateTypes": [
+        "major"
+      ]
+    },
+    {
+      "automerge": true,
+      "description": "Prefix all markdown files updates with 'docs'",
+      "matchFileNames": [
+        "**/*.md"
+      ],
+      "semanticCommitScope": null,
+      "semanticCommitType": "docs"
+    },
+    {
+      "description": "Pin Docker images with their SHA256 digest",
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchManagers": [
+        "dockerfile",
+        "docker-compose"
+      ],
+      "pinDigests": true
+    }
+  ],
+  "rebaseWhen": "auto"
+}
