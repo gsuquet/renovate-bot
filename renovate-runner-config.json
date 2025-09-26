@@ -7,7 +7,6 @@
   "branchPrefix": "gsuquet/renovate/",
   "dependencyDashboardTitle": "Dependency Dashboard (self-hosted)",
   "description": "Renovate self-hosted runner configuration",
-  "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
   "onboarding": true,
   "onboardingBranch": "chore/renovate/onboarding",
   "onboardingCommitMessage": "chore(config): add renovate",
