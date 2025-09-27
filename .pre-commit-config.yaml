@@ -26,7 +26,7 @@ repos:
       - id: shellcheck
 
   - repo: https://github.com/crate-ci/typos
-    rev: v1.36.2
+    rev: v1.36.3
     hooks:
       - id: typos
 
@@ -38,7 +38,7 @@ repos:
           - -c=.config/.yamllint.yaml
 
   - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: 41.123.0
+    rev: 41.131.6
     hooks:
       - id: renovate-config-validator
         args: [--strict]
