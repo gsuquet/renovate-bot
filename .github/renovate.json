@@ -54,6 +54,9 @@
       "matchFileNames": [
         "**/mise/config.toml",
         ".pre-commit-config.yaml"
+      ],
+      "schedule": [
+        "* * * * 5"
       ]
     }
   ],
