@@ -32,6 +32,29 @@
       "matchUpdateTypes": [
         "major"
       ]
+    },
+    {
+      "automerge": true,
+      "description": "Prefix all markdown files updates with 'docs'",
+      "matchFileNames": [
+        "**/*.md"
+      ],
+      "semanticCommitScope": null,
+      "semanticCommitType": "docs"
+    },
+    {
+      "automerge": true,
+      "description": "Automatically update dev tools",
+      "extends": [
+        ":semanticCommitScope(tools)"
+      ],
+      "groupName": "dev tools",
+      "groupSlug": "dev-tools",
+      "ignoreTests": true,
+      "matchFileNames": [
+        "**/mise/config.toml",
+        ".pre-commit-config.yaml"
+      ]
     }
   ],
   "rebaseWhen": "auto",
